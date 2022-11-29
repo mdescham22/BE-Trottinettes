@@ -1,7 +1,7 @@
 # BE-Trottinettes
 
 ## Dossier Google
-https://docs.google.com/document/d/1MKrHLsM-C1flF8zOgsjYKNg1HO2JaTcOGU5qk88Amvs/edit?usp=share_link
+https://drive.google.com/drive/folders/1qL2SHhUzMHzsB9Wl0vsp_rzw7F_oCpg2?usp=share_link
 
 ## Description
 
