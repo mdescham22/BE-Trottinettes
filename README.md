@@ -1,7 +1,7 @@
 # BE-Trottinettes
 
-## Rapport
-https://docs.google.com/document/d/e/2PACX-1vSxZykl2h03H9_HxJqh72q_JStfXRtYi6-noODRr05pNZgMD2HBoDkH_vkxCjdv9mg03f99PfVLca2q/pub
+## Dossier Google
+https://drive.google.com/drive/folders/1qL2SHhUzMHzsB9Wl0vsp_rzw7F_oCpg2?usp=share_link
 
 ## Description
 
