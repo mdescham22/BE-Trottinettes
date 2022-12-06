@@ -1,0 +1,21 @@
+Circuit: * U:\Windows\Bureau\BE-Trottinettes\Hacheur_4Q_Ideal_TD.asc
+
+Per .tran options, skipping operating point for transient analysis.
+
+Date: Tue Dec 06 10:50:18 2022
+Total elapsed time: 0.403 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 166576
+traniter = 166576
+tranpoints = 82688
+accept = 82067
+rejected = 621
+matrix size = 13
+fillins = 4
+solver = Normal
+Matrix Compiler1: 536 bytes object code size  0.1/0.1/[0.0]
+Matrix Compiler2: 799 bytes object code size  0.1/0.1/[0.1]
+

@@ -1,0 +1,29 @@
+* U:\Windows\Bureau\BE-Trottinettes\Hacheur_4Q_Ideal_TD.asc
+S§k1 m+ N001 cmd 0 MYSW
+S§k3 m- N001 0 cmd MYSW
+S§k2 0 m+ 0 cmd MYSW
+S§k4 0 m- cmd 0 MYSW
+Re m+ N002 {R}
+Le N002 N003 {L}
+V1 N001 0 24
+B1 N003 m- V= E
+V3 Triangle 0 PULSE(0 +1 0 {0.5/Freq} {0.5/Freq} 0 {1/Freq} 2000)
+V4 Modulant 0 PULSE(0.9 0.9 2m 1p 1p 2 2)
+B§PWM cmd 0 V=if(V(Modulant)>V(Triangle),1,-1)
+.model MYSW SW(Ron=1m Roff=1Meg Vt=0)
+.param R=1
+.param L=2m
+.param E=0
+.tran 0 15m 0 200n uic
+* http://www.linear.com/solutions/5735
+* Modele du pont en H
+* Modele electrique du moteur\nR resistance bobinage (ohm)\nL inductance bobinage (H)\nTension fixée sur le schéma
+* Commande
+.param Freq=20k
+* Simulation de 0 à 15ms
+* Les paramètres électrique du moteurs \nsont donnés dans la colonne de droite\nLe moteur est simulé à vitesse constante \n(partie méca non simulée)\nPar défaut, E vaut 0 (rotor bloqué).\n Il peut être modifié.
+* Simulation pont H simplifié
+* UBatt
+* Generation PWM (MLI)
+.backanno
+.end
