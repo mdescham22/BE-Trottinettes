@@ -67,16 +67,23 @@ void IT_Principale(void);
 
 
 float Te,Te_us;
-
+float Epsilon, Epsilon_1, Sigma, Sigma_1, tau_3, tau_4;
+float Alpha;
+float Vretour,Cons_In,Yc;
 int main (void)
 {
 // !OBLIGATOIRE! //	
 Conf_Generale_IO_Carte();	
 	
+//Yc = 1.75;
+//Vretour = 1.65;
+Epsilon_1 = 0;
+Sigma_1 = 0;
+tau_3=0.002;
+tau_4=0.0028;
 
-	
 // ------------- Discret, choix de Te -------------------	
-Te=	1.0; // en seconde
+Te=	2.5e-4;; // en seconde
 Te_us=Te*1000000.0; // conversion en µs pour utilisation dans la fonction d'init d'interruption
 	
 
@@ -97,8 +104,8 @@ R_Cyc_2(2048);
 LED_Courant_On;
 LED_PWM_On;
 LED_PWM_Aux_Off;
-LED_Entree_10V_On;
-LED_Entree_3V3_Off;
+LED_Entree_10V_Off;
+LED_Entree_3V3_On;
 LED_Codeur_Off;
 
 // Conf IT
@@ -116,19 +123,35 @@ Conf_IT_Principale_Systick(IT_Principale, Te_us);
 //=================================================================================================================
 // 					FONCTION D'INTERRUPTION PRINCIPALE SYSTICK
 //=================================================================================================================
-int Courant_1,Cons_In;
 
 
 void IT_Principale(void)
 {
 	
-	Cons_In=Entree_10V();
-	Courant_1 =I1();
+	//	Cons_In= Entree_10V();
+//		Yc = Entree_3V3();
+	//	Vretour =I1();
+//	ConsinN = (float) Cons_In * 3,3/4096;
+//	VretourN = (float) Vretour * 3,3/4096;
+//	Epsilon_N = ConsinN - VretourN;
 	
+  Yc = (float) Entree_3V3()* 3.3/4096;
+	Vretour = (float) I1()* 3.3/4096;
 	
+	Epsilon = Yc - Vretour;
+	Sigma = Sigma_1 + (Te+2*tau_3)/(2*tau_4)*Epsilon + (Te-2*tau_3)/(2*tau_4)*Epsilon_1;
 	
-	R_Cyc_1(Cons_In);
-	R_Cyc_2(Cons_In);
+	if (Sigma>0.45){Sigma = 0.45;}
+	if (Sigma <-0.45){Sigma = -0.45;}
+	
+	Sigma_1 = Sigma;
+	Epsilon_1 = Epsilon;
+	
+	Alpha = (Sigma + 0.5) * 4096;
+	
+	R_Cyc_1((int) Alpha);
+	R_Cyc_2((int) Alpha);
+	
 	
 }
 
